@@ -1,0 +1,29 @@
+.board {
+  @apply flex flex-row items-start;
+}
+
+.board-wrapper {
+  @apply p-4 h-full overflow-auto;
+}
+
+.column {
+  @apply flex-1 p-4 mr-4 rounded bg-gray-200;
+  min-width: 350px;
+}
+
+.column-header {
+  @apply flex items-center justify-between mb-3 font-bold;
+}
+
+.task-bg {
+  @apply absolute inset-0;
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.task-view {
+  @apply flex flex-col flex-grow items-start justify-between px-4;
+}
+
+.task-wrapper {
+  @apply max-w-2xl bg-gray-200 m-32 mx-auto py-4 rounded;
+}
