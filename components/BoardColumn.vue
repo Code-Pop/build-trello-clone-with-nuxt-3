@@ -1,8 +1,7 @@
 <script setup>
-import { routerKey } from 'vue-router'
 import { useBoardStore } from '../stores/boardStore'
 
-defineProps({
+const props = defineProps({
   column: {
     type: Object,
     required: true
@@ -17,6 +16,15 @@ const boardStore = useBoardStore()
 const router = useRouter()
 
 const editNameState = ref(false)
+const newTaskName = ref('')
+
+function addTask() {
+  boardStore.addTask({
+    taskName: newTaskName.value,
+    columnIndex: props.columnIndex
+  })
+  newTaskName.value = ''
+}
 
 function deleteColumn(columnIndex) {
   boardStore.deleteColumn(columnIndex)
@@ -55,5 +63,12 @@ function goToTask(taskId) {
         </UCard>
       </li>
     </ul>
+    <UInput
+      v-model="newTaskName"
+      type="text"
+      placeholder="Create new task"
+      icon="i-heroicons-plus-circle-solid"
+      @keyup.enter="addTask"
+    />
   </UContainer>
 </template>
